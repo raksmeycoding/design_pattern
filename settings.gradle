@@ -1,0 +1,4 @@
+rootProject.name = 'Design_Pattern'
+
+include 'command_pattern'
+

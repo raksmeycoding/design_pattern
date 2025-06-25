@@ -1,5 +1,6 @@
 package com.raksmey.command_pattern.command;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -17,7 +18,11 @@ public class JsonCommandAdapter<T> implements RawWorkflowCommand {
 
     @Override
     public void execute(String rawJsonPayload) throws Exception {
-        T dto = mapper.readValue(rawJsonPayload, dtoType);
-        target.execute(dto);
+        try {
+            T dto = mapper.readValue(rawJsonPayload, dtoType);
+            target.execute(dto);
+        } catch (JsonProcessingException e) {
+            throw new IllegalArgumentException("Invalid JSON: " + dtoType.getSimpleName());
+        }
     }
 }

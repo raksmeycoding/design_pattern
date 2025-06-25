@@ -3,6 +3,8 @@ package com.raksmey.command_pattern.command;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.raksmey.command_pattern.annotation.ModuleMethodHandler;
+import com.raksmey.command_pattern.domain.WorkflowType;
 import com.raksmey.command_pattern.dto.UserDto;
 import com.raksmey.command_pattern.entity.UserEntity;
 import com.raksmey.command_pattern.repository.UserRepository;
@@ -14,6 +16,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 @Service
+@ModuleMethodHandler(WorkflowType.CREATE_REGISTER_USER)
 @RequiredArgsConstructor
 public class CreateUserCommand implements WorkflowCommand<UserDto> {
 

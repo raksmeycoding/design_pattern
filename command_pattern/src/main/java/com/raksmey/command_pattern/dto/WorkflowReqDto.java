@@ -1,6 +1,6 @@
 package com.raksmey.command_pattern.dto;
 
-import com.raksmey.command_pattern.domain.CommandType;
+import com.raksmey.command_pattern.domain.WorkflowType;
 import com.raksmey.command_pattern.domain.Status;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -31,8 +31,8 @@ public class WorkflowReqDto {
 
     @Schema(
             description = "Type of module",
-            example = CommandType.CREATE_REGISTER_USER,
-            defaultValue = CommandType.CREATE_REGISTER_USER
+            example = WorkflowType.CREATE_REGISTER_USER,
+            defaultValue = WorkflowType.CREATE_REGISTER_USER
     )
     private String moduleType;
 
@@ -40,7 +40,10 @@ public class WorkflowReqDto {
     @Schema(
             description = "Payload data in JSON format",
             example = "{\"firstName\":\"Alic\",\"lastName\":\"Thorouggood\",\"email\":\"athorouggood0@homestead.com\",\"gender\":\"Male\"}",
-            defaultValue = "{\"firstName\":\"Alic\",\"lastName\":\"Thorouggood\",\"email\":\"athorouggood0@homestead.com\",\"gender\":\"Male\"}"
+            // defaultValue = "{\"firstName\":\"Alic\",\"lastName\":\"Thorouggood\",\"email\":\"athorouggood0@homestead.com\",\"gender\":\"Male\"}"
+            defaultValue = "{\"firstName\":\"Alic\",\"lastName\":\"Thorouggood\"," +
+                    "\"email\":\"athorouggood0@homestead.com\",\"gender\":\"Male\"," +
+                    "\"address\":{\"street\":\"123 Main St\",\"city\":\"Anytown\",\"zip\":\"12345\"}}"
     )
     private Map<String, Object> payload;
 

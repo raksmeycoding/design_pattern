@@ -1,5 +1,6 @@
 package com.raksmey.command_pattern;
 
+import com.raksmey.command_pattern.command.CreateCategoryWorkflowCommand;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

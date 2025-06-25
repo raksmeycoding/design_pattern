@@ -6,6 +6,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 
@@ -36,6 +39,8 @@ public class WorkflowReqDto {
     )
     private String moduleType;
 
+    private String UniqueKeyTrx;
+
 
     @Schema(
             description = "Payload data in JSON format",
@@ -45,8 +50,7 @@ public class WorkflowReqDto {
                     "\"email\":\"athorouggood0@homestead.com\",\"gender\":\"Male\"," +
                     "\"address\":{\"street\":\"123 Main St\",\"city\":\"Anytown\",\"zip\":\"12345\"}}"
     )
-    private Map<String, Object> payload;
-
+    private Map<String, Object> trxData;
 
     @Schema(
             description = "Workflow status",
@@ -55,12 +59,24 @@ public class WorkflowReqDto {
     )
     private Status status;
 
+    private String remark;
+
+    private Timestamp createdAt;
+
     @Schema(
             description = "Creator of the request",
             example = "admin",
             defaultValue = "system"
     )
     private String createdBy;
+
+    private Timestamp updatedAt;
+
+    private String updatedBy;
+
+    private Timestamp deletedAt;
+
+    private String deletedBy;
 
 
 

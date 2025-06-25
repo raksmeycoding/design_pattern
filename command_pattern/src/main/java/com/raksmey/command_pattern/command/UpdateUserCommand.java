@@ -16,7 +16,17 @@ public class UpdateUserCommand implements WorkflowCommand<UserDto>{
     private final UserRepository userRepository;
 
     @Override
-    public void execute(UserDto payload) {
+    public void approved(UserDto payload) {
+
+    }
+
+    @Override
+    public void rejected(UserDto dto) throws Exception {
+
+    }
+
+    @Override
+    public void pending(UserDto dto) throws Exception {
 
     }
 }

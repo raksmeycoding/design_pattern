@@ -12,22 +12,44 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class WorkflowEventListener {
+public class WorkflowEventListener implements WorkflowCommandListener{
 
     private final ApplicationContext applicationContext;
     private final WorkflowCommandRegistry commandRegistry;
     private static final Logger logger = LoggerFactory.getLogger(WorkflowEventListener.class);
 
+
     @EventListener
-    public void handle(WorkflowApprovedEvent event) throws Exception {
+    @Override
+    public void approved(WorkflowApprovedEvent event) throws Exception {
         logger.info("workflow approved listener activated. event object: {}", event);
         String type = event.workflowRequestDto().getModuleType();
-        logger.info("bean type: {}", type);
-        String payload = event.workflowRequestDto().getPayload();
+        logger.info("module : {}", type);
+        String payload = event.workflowRequestDto().getTrxData();
         logger.info("payload: {}", payload);
 //        RawWorkflowCommand command = applicationContext.getBean(type, RawWorkflowCommand.class);
         RawWorkflowCommand command = commandRegistry.getCommand(type);
         logger.info("command: {}", command);
-        command.execute(payload);
+        command.approved(payload);
+    }
+
+    @EventListener
+    @Override
+    public void pending(WorkflowPendingEvent event) throws Exception {
+        logger.info("workflow pending listener activated. event object: {}", event);
+        String type = event.workflowRequestDto().getModuleType();
+        String payload = event.workflowRequestDto().getTrxData();
+        RawWorkflowCommand command = commandRegistry.getCommand(type);
+        command.pending(payload);
+    }
+
+    @Override
+    @EventListener
+    public void rejected(WorkflowRejectedEvent event) throws Exception {
+        logger.info("workflow rejected listener activated. event object: {}", event);
+        String type = event.workflowRequestDto().getModuleType();
+        String payload = event.workflowRequestDto().getTrxData();
+        RawWorkflowCommand command = commandRegistry.getCommand(type);
+        command.rejected(payload);
     }
 }

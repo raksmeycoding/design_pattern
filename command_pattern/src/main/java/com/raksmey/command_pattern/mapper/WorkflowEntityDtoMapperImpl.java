@@ -1,5 +1,6 @@
 package com.raksmey.command_pattern.mapper;
 
+import com.raksmey.command_pattern.domain.Status;
 import com.raksmey.command_pattern.dto.WorkflowDto;
 import com.raksmey.command_pattern.entity.WorkflowEntity;
 import org.springframework.stereotype.Service;
@@ -10,27 +11,40 @@ public class WorkflowEntityDtoMapperImpl implements MyMapper<WorkflowEntity, Wor
     @Override
     public WorkflowDto mapFrom(WorkflowEntity workflowEntity) {
         WorkflowDto workflowDto = new WorkflowDto();
-        workflowDto.setId(workflowEntity.getId());
+        workflowDto.setMakerId(workflowEntity.getMakerId());
+        workflowDto.setCheckerId(workflowEntity.getCheckerId());
+        workflowDto.setUniqueKeyTrx(workflowEntity.getUniqueKeyTrx());
         workflowDto.setModuleType(workflowEntity.getModuleType());
-        workflowDto.setPayload(workflowEntity.getPayload());
+        workflowDto.setTrxData(workflowEntity.getTrxData());
         workflowDto.setStatus(workflowEntity.getStatus());
-        workflowDto.setCreatedBy(workflowEntity.getCreatedBy());
+        workflowDto.setRemark(workflowEntity.getRemark());
         workflowDto.setCreatedAt(workflowEntity.getCreatedAt());
-        workflowDto.setReviewedAt(workflowEntity.getReviewedAt());
-        workflowDto.setDeleted(workflowEntity.isDeleted());
+        workflowDto.setCreatedBy(workflowEntity.getCreatedBy());
+        workflowDto.setUpdatedAt(workflowEntity.getUpdatedAt());
+        workflowDto.setUpdatedBy(workflowEntity.getUpdatedBy());
+        workflowDto.setUpdatedAt(workflowEntity.getUpdatedAt());
+        workflowDto.setUpdatedBy(workflowEntity.getUpdatedBy());
+        workflowDto.setDelete(workflowEntity.isDeleted());
         return workflowDto;
     }
 
     @Override
     public WorkflowEntity mapTo(WorkflowDto workflowDto) {
         WorkflowEntity workflowEntity = new WorkflowEntity();
+        workflowEntity.setMakerId(workflowDto.getMakerId());
+        workflowEntity.setCheckerId(workflowDto.getCheckerId());
+        workflowEntity.setUniqueKeyTrx(workflowDto.getUniqueKeyTrx());
         workflowEntity.setModuleType(workflowDto.getModuleType());
-        workflowEntity.setPayload(workflowDto.getPayload());
+        workflowEntity.setTrxData(workflowDto.getTrxData());
         workflowEntity.setStatus(workflowDto.getStatus());
-        workflowEntity.setCreatedBy(workflowDto.getCreatedBy());
+        workflowEntity.setRemark(workflowDto.getRemark());
         workflowEntity.setCreatedAt(workflowDto.getCreatedAt());
-        workflowEntity.setReviewedAt(workflowDto.getReviewedAt());
-        workflowEntity.setDeleted(workflowDto.isDeleted());
+        workflowEntity.setCreatedBy(workflowDto.getCreatedBy());
+        workflowEntity.setUpdatedAt(workflowDto.getUpdatedAt());
+        workflowEntity.setUpdatedBy(workflowDto.getUpdatedBy());
+        workflowEntity.setUpdatedAt(workflowDto.getUpdatedAt());
+        workflowEntity.setUpdatedBy(workflowDto.getUpdatedBy());
+        workflowEntity.setDeleted(workflowEntity.isDeleted());
         return workflowEntity;
     }
 }

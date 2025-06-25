@@ -1,5 +1,7 @@
 package com.raksmey.command_pattern.command;
 
 public interface RawWorkflowCommand {
-    void execute(String rawJsonPayload) throws Exception;
+    void approved(String payload) throws Exception;
+    void rejected(String payload) throws Exception;
+    void pending(String payload) throws Exception;
 }

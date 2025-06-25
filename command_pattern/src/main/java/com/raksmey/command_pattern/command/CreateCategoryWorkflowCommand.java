@@ -8,10 +8,17 @@ public  class CreateCategoryWorkflowCommand  extends WorkflowCommandAbstract<Str
     }
 
     @Override
-    public void execute(String dto) throws Exception {
+    public void approved(String dto) throws Exception {
 
     }
 
+    @Override
+    public void rejected(String dto) throws Exception {
 
+    }
 
+    @Override
+    public void pending(String dto) throws Exception {
+
+    }
 }

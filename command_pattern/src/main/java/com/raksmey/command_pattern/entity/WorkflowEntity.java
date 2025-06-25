@@ -5,7 +5,7 @@ import com.raksmey.command_pattern.domain.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -19,19 +19,29 @@ public class WorkflowEntity {
 
     private Long checkerId;
 
+    private String uniqueKeyTrx;
+
     private String moduleType;
 
     @Lob
-    private String payload;
+    private String trxData;
 
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    private String remark;
+
+    private Timestamp createdAt;
+
     private String createdBy;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private Timestamp updatedAt;
 
-    private LocalDateTime reviewedAt;
+    private String updatedBy;
 
-    private boolean deleted = false;
+    private Timestamp deletedAt;
+
+    private String deletedBy;
+
+    private boolean isDeleted;
 }

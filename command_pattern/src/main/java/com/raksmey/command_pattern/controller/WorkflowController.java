@@ -28,4 +28,33 @@ public class WorkflowController {
         return ResponseEntity.ok("Approved");
     }
 
+
+//    @PostMapping("/reject/{id}")
+//    public ResponseEntity<?> reject(@PathVariable Long id) {
+//        service.reject(id, "adminUser");
+//        return ResponseEntity.ok("Rejected");
+//    }
+//
+//    @PostMapping("/modify/{id}")
+//    public ResponseEntity<?> modify(@PathVariable Long id, @RequestBody Map<String, Object> data) throws JsonProcessingException {
+//        service.modify(id, data);
+//        return ResponseEntity.ok("Modified");
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<?> delete(@PathVariable Long id) {
+//        service.softDelete(id);
+//        return ResponseEntity.ok("Deleted");
+//    }
+//
+//    @GetMapping("/myTransaction")
+//    public ResponseEntity<?> myTx() {
+//        return ResponseEntity.ok(service.getMyPending("currentUser"));
+//    }
+//
+//    @GetMapping("/{id}")
+//    public ResponseEntity<?> get(@PathVariable Long id) {
+//        return ResponseEntity.ok(service.getById(id));
+//    }
+
 }

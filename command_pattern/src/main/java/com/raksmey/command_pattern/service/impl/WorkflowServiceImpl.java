@@ -50,4 +50,36 @@ public class WorkflowServiceImpl implements WorkflowService {
         req.setCreatedBy(reviewer);
         applicationEventPublisher.publishEvent(new WorkflowApprovedEvent(workflowEntityDtoMapper.mapFrom(req)));
     }
+
+//    public void reject(Long id, String reviewer) {
+//        WorkflowRequest req = repo.findByIdAndDeletedFalse(id).orElseThrow();
+//        if (req.getStatus() != Status.PENDING) throw new IllegalStateException("Already processed");
+//        req.setStatus(Status.REJECTED);
+//        req.setReviewedBy(reviewer);
+//        req.setReviewedAt(LocalDateTime.now());
+//        repo.save(req);
+//    }
+
+//    public void modify(Long id, Map<String, Object> newData) throws JsonProcessingException {
+//        WorkflowRequest req = repo.findByIdAndDeletedFalse(id).orElseThrow();
+//        if (req.getStatus() != Status.PENDING) throw new IllegalStateException("Cannot modify approved/rejected request");
+//        req.setPayload(mapper.writeValueAsString(newData));
+//        repo.save(req);
+//    }
+
+//    public void softDelete(Long id) {
+//        WorkflowRequest req = repo.findByIdAndDeletedFalse(id).orElseThrow();
+//        req.setDeleted(true);
+//        repo.save(req);
+//    }
+
+//    public List<WorkflowRequest> getMyPending(String username) {
+//        return repo.findBySubmittedByAndDeletedFalse(username).stream()
+//                .filter(r -> r.getStatus() == Status.PENDING)
+//                .collect(Collectors.toList());
+//    }
+
+//    public WorkflowRequest getById(Long id) {
+//        return repo.findByIdAndDeletedFalse(id).orElseThrow();
+//    }
 }
